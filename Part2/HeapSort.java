@@ -6,10 +6,18 @@ public class HeapSort {
         return a;
     }
 
+    private int leftChild(int i) {
+        return i << 1;
+    }
+
+    private int rightChild(int i) {
+        return (i << 1) + 1;       // the priority of '+" is greater than '<<'
+    }
+
     private void maxHeapify(int[] A, int i) {
         int largest = 0;
-        int l = 2 * i;
-        int r = l + 1;
+        int l = leftChild(i);
+        int r = rightChild(i);
 
         if (l < heapSize && A[l] > A[i])
             largest = l;
